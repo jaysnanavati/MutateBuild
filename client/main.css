@@ -1,9 +1,11 @@
 @import url("https://colorlib.com/polygon/gentelella/css/animate.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/jvectormap/2.0.4/jquery-jvectormap.min.css");
 @charset "UTF-8";
 body {
-    background-color: white !important
+    background-color: white !important;
 }
 
 .left_col {
@@ -4209,8 +4211,12 @@ ul.project_files li a i {
 
 /** login **/
 
-.login {
+body.login-wrapper {
     background: #F7F7F7;
+}
+
+.login .fa-bolt {
+    color: #159CEE;
 }
 
 .login .fa-paw {
@@ -4315,7 +4321,6 @@ form:after {
     padding: 25px 0 0;
     position: relative;
     text-align: center;
-    text-shadow: 0 1px 0 #fff;
     min-width: 280px;
 }
 
@@ -4329,10 +4334,11 @@ form:after {
 }
 
 .login_content h1 {
-    font: normal 25px Helvetica, Arial, sans-serif;
+    font: normal 72px Helvetica, Arial, sans-serif;
     letter-spacing: -0.05em;
     line-height: 20px;
     margin: 10px 0 30px;
+    color: #159CEE;
 }
 
 .login_content h1:before,
@@ -4341,19 +4347,18 @@ form:after {
     height: 1px;
     position: absolute;
     top: 10px;
-    width: 27%;
+    width: 100%;
 }
 
-.login_content h1:after {
-    background: #7e7e7e;
-    background: linear-gradient(left, #7e7e7e 0%, white 100%);
-    right: 0;
+.login_content .tag-line {
+    color: #34495E;
+    font-size: 16px;
+    margin-top: 26px;
 }
 
-.login_content h1:before {
-    background: #7e7e7e;
-    background: linear-gradient(right, #7e7e7e 0%, white 100%);
-    left: 0;
+.login_content .login-btn {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .login_content h1:before,
@@ -4365,68 +4370,14 @@ form:after {
     width: 20%;
 }
 
-.login_content h1:after {
-    background: #7e7e7e;
-    background: linear-gradient(left, #7e7e7e 0%, white 100%);
-    right: 0;
-}
-
-.login_content h1:before {
-    background: #7e7e7e;
-    background: linear-gradient(right, #7e7e7e 0%, white 100%);
-    left: 0;
-}
-
 .login_content form {
     margin: 20px 0;
     position: relative;
 }
 
-.login_content form input[type="text"],
-.login_content form input[type="email"],
-.login_content form input[type="password"] {
-    border-radius: 3px;
-    -ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
-    -o-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
-    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
-    border: 1px solid #c8c8c8;
-    color: #777;
-    margin: 0 0 20px;
-    width: 100%;
-}
-
-.login_content form input[type="text"]:focus,
-.login_content form input[type="email"]:focus,
-.login_content form input[type="password"]:focus {
-    -ms-box-shadow: 0 0 2px #ed1c24 inset;
-    -o-box-shadow: 0 0 2px #ed1c24 inset;
-    box-shadow: 0 0 2px #A97AAD inset;
-    background-color: #fff;
-    border: 1px solid #A878AF;
-    outline: none;
-}
-
-#username {
-    background-position: 10px 10px !important;
-}
-
-#password {
-    background-position: 10px -53px !important;
-}
-
 .login_content form div a {
     font-size: 12px;
     margin: 10px 15px 0 0;
-}
-
-.reset_pass {
-    margin-top: 10px !important;
-}
-
-.login_content div .reset_pass {
-    margin-top: 13px !important;
-    margin-right: 39px;
-    float: right;
 }
 
 .separator {
@@ -5575,6 +5526,18 @@ ul.notifications {
 .dropzone {
     min-height: 300px;
     border: 1px solid #e5e5e5;
+}
+
+.nav_menu {
+    background: #F4F9FE !important;
+}
+
+.container.body {
+    background: white !important;
+}
+
+.user-profile {
+    color: #1F98DE !important;
 }
 
 

@@ -5,9 +5,15 @@ import './main.html';
 
 FlowRouter.route('/', {
     name: 'Home.Show',
-    triggersEnter: [checkUserLoggedIn],
+    triggersEnter: [function(context, redirect) {
+        redirect("Home.Show")
+    }]
+});
+
+FlowRouter.route('/home', {
+    name: 'Home.Show',
     action(params, queryParams) {
-        console.log("home")
+        BlazeLayout.render('home_template', {});
     }
 });
 
@@ -15,7 +21,7 @@ FlowRouter.route('/login', {
     name: 'Login.Show',
     triggersEnter: [function(context, redirect) {
         if (Meteor.userId()) {
-            redirect("/home")
+            redirect("Home.Show")
         }
     }],
     action(params, queryParams) {

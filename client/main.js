@@ -4,7 +4,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 FlowRouter.route('/', {
-    name: 'Home.Show',
+    name: 'Root',
     triggersEnter: [function(context, redirect) {
         redirect("Home.Show")
     }]

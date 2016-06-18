@@ -22,8 +22,11 @@
             <div class="main_container">
                 <!-- top navigation -->
                 <div class="top_nav">
-                    <div class="nav_menu">
-                        <nav class="" role="navigation">
+                    <div class="nav_menu ">
+                        <nav class="navbar-build" role="navigation">
+                            <ul class="nav navbar-nav navbar-left">
+                                <div class="navbar-logo-wrapper"><i class="fa fa-bolt"></i><span class="mutate-logo">Mutate</span><span class="build-logo">Build</span></div>
+                            </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -114,7 +117,76 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <!-- /top tiles -->
-                    <div class="row">
+                    <div class="row" id="build-title-row" style="padding-top:60px">
+                        <p class="project-header">Here are all the builds for</p>
+                        <p class="project-header-sub">A new build will automatically be kicked off every time a 'git push' happens to your repository.</p>
+                    </div>
+                    <div class="row" id="build-table">
+                        <div class="x_panel">
+                            <div class="x_title build-table-title">
+                                <h2><i class="fa fa-check-circle"></i> PASSING</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <button class="btn btn-default" type="button" style="color:#1F98DE">Build Now</button>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>STATUS</th>
+                                            <th>STARTED</th>
+                                            <th>AUTHOR</th>
+                                            <th>REVISION</th>
+                                            <th>COMMIT MESSAGE</th>
+                                            <th>TESTS</th>
+                                            <th>MUTATION SCORE</th>
+                                            <th>MUTANTS GENERATED</th>
+                                            <th>SURVIVED</th>
+                                            <th>KILLED</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

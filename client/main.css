@@ -6,6 +6,7 @@
 @charset "UTF-8";
 body {
     background-color: white !important;
+    font-family: "helvetica-light" !important;
 }
 
 .left_col {
@@ -13,7 +14,7 @@ body {
 }
 
 .nav-sm .container.body .col-md-3.left_col {
-    width: 70px;
+    width: 0px;
     padding: 0;
     z-index: 9999;
     position: absolute;
@@ -35,12 +36,13 @@ body {
 
 .nav-sm .container.body .right_col {
     padding: 10px 20px;
-    margin-left: 70px;
+    margin: auto;
+    width: 65%;
     z-index: 2;
 }
 
 .nav-sm .navbar.nav_title {
-    width: 70px;
+    width: 0px;
 }
 
 .nav-sm .navbar.nav_title a span {
@@ -60,7 +62,7 @@ body {
 
 .nav-sm .main_container .top_nav {
     display: block;
-    margin-left: 70px;
+    margin-left: 0px;
     z-index: 2;
 }
 
@@ -252,7 +254,7 @@ body {
 }
 
 body .container.body .right_col {
-    background: #F7F7F7;
+    background: white;
 }
 
 .nav-md .container.body .right_col {
@@ -266,6 +268,29 @@ body .container.body .right_col {
     background: #2A3F54;
     border-radius: 0;
     height: 57px;
+}
+
+.project-header {
+    color: #1F98DE;
+    font-size: 43px;
+    font-family: "helvetica-light" !important
+}
+
+#build-title-row {
+    margin-top: 25px;
+}
+
+.build-table-title {
+    background-color: #F4F9FE !important;
+}
+
+#build-table {
+    margin-top: 25px;
+}
+
+.project-header-sub {
+    font-size: 20px;
+    font-family: "helvetica-light" !important
 }
 
 @media (max-width: 991px) {
@@ -1110,8 +1135,6 @@ h2 {
 .x_panel {
     position: relative;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 10px 17px;
     display: inline-block;
     background: #fff;
     border: 1px solid #E6E9ED;
@@ -4203,6 +4226,35 @@ ul.project_files li a i {
 
 .product_social ul li a i {
     font-size: 35px;
+}
+
+.fa-bolt,
+.mutate-logo {
+    color: #159CEE !important;
+}
+
+.mutate-logo {
+    margin-left: 3px;
+}
+
+.navbar-build {
+    width: 65%;
+    margin: auto;
+}
+
+.navbar-logo-wrapper {
+    font-size: 28px !important;
+    margin-top: 10px;
+    margin-left: 11px;
+}
+
+.build-logo {
+    color: #8BC7E9 !important;
+}
+
+.mutate-logo,
+.build-logo {
+    font-family: "helvetica" !important;
 }
 
 

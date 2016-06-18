@@ -10,6 +10,13 @@ FlowRouter.route('/', {
     }]
 });
 
+FlowRouter.route('/test', {
+    name: 'Home.Test',
+    action(params, queryParams) {
+        BlazeLayout.render('home', {});
+    }
+});
+
 FlowRouter.route('/home', {
     name: 'Home.Show',
     triggersEnter: checkUserLoggedIn,

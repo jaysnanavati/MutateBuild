@@ -12,6 +12,7 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/home', {
     name: 'Home.Show',
+    triggersEnter: checkUserLoggedIn,
     action(params, queryParams) {
         BlazeLayout.render('home', {});
     }

@@ -20,7 +20,7 @@ FlowRouter.route('/home', {
 FlowRouter.route('/login', {
     name: 'Login.Show',
     triggersEnter: [function(context, redirect) {
-        if (Meteor.userId()) {
+        if (Meteor.user()) {
             redirect("Home.Show")
         }
     }],
@@ -30,7 +30,7 @@ FlowRouter.route('/login', {
 });
 
 function checkUserLoggedIn(context, redirect) {
-    if (!Meteor.userId()) {
+    if (!Meteor.user()) {
         redirect("Login.Show");
     }
 }

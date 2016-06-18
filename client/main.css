@@ -4224,6 +4224,24 @@ ul.project_files li a i {
     margin: 20px 0;
 }
 
+.build-passing {
+    color: #40B859;
+}
+
+.user-name {
+    font-size: 17px !important;
+}
+
+.build-status-title {
+    position: absolute;
+    top: 14px;
+    left: 11px;
+}
+
+.build-failing {
+    color: red;
+}
+
 .product_social ul li a i {
     font-size: 35px;
 }

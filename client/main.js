@@ -14,11 +14,12 @@ FlowRouter.route('/home', {
     name: 'Home.Show',
     triggersEnter: checkUserLoggedIn,
     action(params, queryParams) {
+        BlazeLayout.render('home', {});
         HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().services.github.accessToken } }, function(error, response) {
             if (error) {
                 console.log(error);
             } else {
-                BlazeLayout.render('home', {});
+
             }
         });
     }

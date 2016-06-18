@@ -10,26 +10,17 @@ FlowRouter.route('/', {
     }]
 });
 
-FlowRouter.route('/test', {
-    name: 'Home.Test',
-    action(params, queryParams) {
-        HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().provider.github.accessToken } }, function(error, response) {
-            if (error) {
-                console.log(error);
-            } else {
-                Meteor.user().provider.github.avatar_url = response.data.avatar_url;
-                Meteor.user().provider.github.repos_url = response.data.repos_url;
-                BlazeLayout.render('home', {});
-            }
-        });
-    }
-});
-
 FlowRouter.route('/home', {
     name: 'Home.Show',
     triggersEnter: checkUserLoggedIn,
     action(params, queryParams) {
-        BlazeLayout.render('home', {});
+        HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().services.github.accessToken } }, function(error, response) {
+            if (error) {
+                console.log(error);
+            } else {
+                BlazeLayout.render('home', {});
+            }
+        });
     }
 });
 

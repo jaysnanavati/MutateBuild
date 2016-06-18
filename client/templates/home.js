@@ -17,7 +17,5 @@ Template.home.helpers({
 });
 
 Template.home.onRendered(function() {
-    HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().services.github.accessToken } }, function(error, response) {
-        console.log(response);
-    });
+
 });

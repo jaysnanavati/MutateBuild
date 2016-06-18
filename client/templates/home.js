@@ -9,7 +9,7 @@ Template.home.helpers({
         return true;
     },
     userImageURL: function() {
-        return "https://avatars2.githubusercontent.com/u/2691401?s=72";
+        return Meteor.user().provider.github.avatar_url;
     },
     appName: function() {
         return null;

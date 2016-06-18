@@ -3,20 +3,28 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+FlowRouter.route('/', {
+    name: 'Home.Show',
+    triggersEnter: [checkUserLoggedIn],
+    action(params, queryParams) {
+        console.log("home")
+    }
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
+FlowRouter.route('/login', {
+    name: 'Login.Show',
+    triggersEnter: [function(context, redirect) {
+        if (Meteor.user()) {
+            redirect("/home")
+        }
+    }],
+    action(params, queryParams) {
+        BlazeLayout.render('login_page_template', {});
+    }
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+function checkUserLoggedIn(context, redirect) {
+    if (!Meteor.user()) {
+        redirect("Login.Show");
+    }
+}

@@ -22,3 +22,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 less
 accounts-ui
 accounts-github
+kadira:flow-router
+kadira:blaze-layout

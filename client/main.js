@@ -13,7 +13,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/home', {
     name: 'Home.Show',
     action(params, queryParams) {
-        BlazeLayout.render('home_template', {});
+        BlazeLayout.render('home', {});
     }
 });
 

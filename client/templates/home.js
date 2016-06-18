@@ -9,14 +9,14 @@ Template.home.helpers({
         return true;
     },
     userImageURL: function() {
-        return Meteor.user().provider.github.avatar_url;
+        return Meteor.user().services.github.avatar_url;
     },
     appName: function() {
         return null;
     }
 });
 
-Template.home.onCreated(function() {
+Template.home.onRendered(function() {
     HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().services.github.accessToken } }, function(error, response) {
         console.log(response);
     });

@@ -10,5 +10,8 @@ Template.home.helpers({
     },
     userImageURL: function() {
         return "https://avatars2.githubusercontent.com/u/2691401?s=72";
+    },
+    appName: function() {
+        return null;
     }
 });

@@ -1,0 +1,80 @@
+<template name="buildTable">
+    <!-- /top tiles -->
+    <div class="row" id="build-title-row" style="padding-top:60px">
+        <p class="project-header">Here are all the builds for {{repoName}}</p>
+        <p class="project-header-sub">A new build will automatically be kicked off every time a 'git push' happens to your repository.</p>
+    </div>
+    <div class="row" id="build-table">
+        <div class="x_panel">
+            <div class="x_title build-table-title">
+                <div class="build-status-title">
+                    {{#if buildPassing}}
+                    <h2 class="build-passing">
+                                 <i class="fa fa-check-circle"></i> PASSING</h2> {{else}}
+                    <h2 class="build-failing">
+                                  <i class="fa fa-exclamation-circle"></i> FAILING</h2> {{/if}}
+                </div>
+                <ul class="nav navbar-right panel_toolbox">
+                    <button class="btn btn-default" type="button" style="color:#1F98DE;margin-top:10px;margin-right:20px">Build Now</button>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STATUS</th>
+                            <th>STARTED</th>
+                            <th>AUTHOR</th>
+                            <th>REVISION</th>
+                            <th>COMMIT MESSAGE</th>
+                            <th>TESTS</th>
+                            <th>MUTATION SCORE</th>
+                            <th>MUTANTS GENERATED</th>
+                            <th>SURVIVED</th>
+                            <th>KILLED</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>

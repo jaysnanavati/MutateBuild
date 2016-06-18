@@ -4216,6 +4216,10 @@ ul.project_files li a i {
     border: 2px dashed #E0E0E0;
 }
 
+.navbar-logo-login {
+    font-size: 60px;
+}
+
 .price-tax {
     font-size: 18px;
 }
@@ -4403,6 +4407,53 @@ form:after {
     text-decoration: underline;
 }
 
+.mutate-link {
+    color: #1F98DE
+}
+
+.appselect-user-image {
+    height: 50px;
+    width: 50px;
+}
+
+.appselect-build-btn {
+    background-color: #159CEE;
+    color: white;
+    float: right;
+    font-weight: bold;
+}
+
+.appselect-user-name {
+    color: white !important;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.appselect-table {}
+
+.appselect li {
+    background-color: white !important;
+    font-size: 17px;
+}
+
+.appselect li .repo-name {
+    margin-left: 10px;
+}
+
+.appselect-row {
+    width: 60%;
+    margin: auto;
+    margin-top: 28px;
+    background-color: red;
+}
+
+.appselect-table-title {
+    background-color: #159CEE;
+    color: white;
+    padding: 13px;
+}
+
 .login_content h1 {
     font: normal 72px Helvetica, Arial, sans-serif;
     letter-spacing: -0.05em;
@@ -4423,7 +4474,7 @@ form:after {
 .login_content .tag-line {
     color: #34495E;
     font-size: 16px;
-    margin-top: 26px;
+    margin-top: 10px;
 }
 
 .login_content .login-btn {

@@ -3,6 +3,14 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+
+Accounts.onLogin(function(data) {
+    if (!Meteor.user().services.github.avatar_url) {
+        console.log(data)
+        Meteor.user().services.github.avatar_url = "https://avatars2.githubusercontent.com/u/2691401?s=72";
+    }
+})
+
 FlowRouter.route('/', {
     name: 'Root',
     triggersEnter: [function(context, redirect) {

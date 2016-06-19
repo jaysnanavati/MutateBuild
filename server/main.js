@@ -7,18 +7,7 @@ Meteor.startup(() => {
 
     Meteor.methods({
         getUserAvatarURL: function() {
-            var user = Meteor.users.findOne({ _id: userId });
-            console.log(user);
-            var access_token = this.user.services.github.accessToken;
-            result = Meteor.http.get("https://api.github.com/user", {
-                params: {
-                    access_token: access_token
-                }
-            });
-            if (result.error)
-                throw result.error;
 
-            return result.data;
         },
         getUserRepos: function() {
             return "repos from server"

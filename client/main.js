@@ -3,14 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-
-Accounts.onLogin(function(data) {
-    if (!Meteor.user().services.github.avatar_url) {
-        console.log(data)
-        Meteor.user().services.github.avatar_url = "https://avatars2.githubusercontent.com/u/2691401?s=72";
-    }
-})
-
 FlowRouter.route('/', {
     name: 'Root',
     triggersEnter: [function(context, redirect) {
@@ -22,10 +14,7 @@ FlowRouter.route('/home', {
     name: 'Home.Show',
     triggersEnter: checkUserLoggedIn,
     action(params, queryParams) {
-        Meteor.call('getUserAvatarURL', function(error, response) {
-            Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.avatar_url': response } })
-            BlazeLayout.render('home', {});
-        });
+        BlazeLayout.render('home', {});
     }
 });
 

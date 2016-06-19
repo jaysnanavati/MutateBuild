@@ -29,5 +29,7 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 Accounts.onLogin(function(data) {
-    console.log(Meteor.user().services.github);
+    if (!Meteor.user().services.github.avatar_url) {
+        Meteor.user().services.github.avatar_url = "https://avatars2.githubusercontent.com/u/2691401?s=72";
+    }
 })

@@ -29,5 +29,5 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 Accounts.onLogin(function(data) {
-    console.log(data);
+    console.log(Meteor.user().services.github);
 })

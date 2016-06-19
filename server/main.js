@@ -7,7 +7,16 @@ Meteor.startup(() => {
 
     Meteor.methods({
         getUserAvatarURL: function() {
-            return "https://avatars2.githubusercontent.com/u/2691401?s=72";
+            var access_token = this.user.services.github.accessToken;
+            result = Meteor.http.get("https://api.github.com/user", {
+                params: {
+                    access_token: access_token
+                }
+            });
+            if (result.error)
+                throw result.error;
+
+            return result.data;
         },
         getUserRepos: function() {
             return "repos from server"

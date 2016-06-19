@@ -9,7 +9,7 @@ Template.home.helpers({
         return true;
     },
     userImageURL: function() {
-        HTTP.call('GET', 'https://api.github.com/user', { params: { access_token: Meteor.user().services.github.accessToken } }, function(error, response) {
+        Meteor.call('getUserAvatarURL', function(response) {
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'services.github.avatar_url': response } })
             console.log(response);
             return Meteor.user().services.github.avatar_url;

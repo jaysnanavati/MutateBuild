@@ -3,7 +3,7 @@ Template.appSelect.helpers({
         return Meteor.user().services.github.username
     },
     userImageURL: function() {
-        return return Meteor.user().profile.avatar_url;
+        return Meteor.user().profile.avatar_url;
     }
 });
 

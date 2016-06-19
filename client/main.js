@@ -22,7 +22,10 @@ FlowRouter.route('/home', {
     name: 'Home.Show',
     triggersEnter: checkUserLoggedIn,
     action(params, queryParams) {
-        BlazeLayout.render('home', {});
+        Meteor.call('getUserAvatarURL', function(error, response) {
+            Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.avatar_url': response } })
+            BlazeLayout.render('home', {});
+        });
     }
 });
 

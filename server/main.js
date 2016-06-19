@@ -7,6 +7,7 @@ Meteor.startup(() => {
 
     Meteor.methods({
         getUserAvatarURL: function() {
+            console.log(this.user);
             var access_token = this.user.services.github.accessToken;
             result = Meteor.http.get("https://api.github.com/user", {
                 params: {

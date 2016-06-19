@@ -9,7 +9,7 @@ Template.home.helpers({
         return true;
     },
     userImageURL: function() {
-        Meteor.call('getUserAvatarURL', function(response) {
+        Meteor.call('getUserAvatarURL', function(error, response) {
             Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.avatar_url': response } })
             console.log(response);
             return Meteor.user().profile.avatar_url;

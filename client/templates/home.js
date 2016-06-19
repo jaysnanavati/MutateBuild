@@ -10,9 +10,9 @@ Template.home.helpers({
     },
     userImageURL: function() {
         Meteor.call('getUserAvatarURL', function(response) {
-            Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'services.github.avatar_url': response } })
+            Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.avatar_url': response } })
             console.log(response);
-            return Meteor.user().services.github.avatar_url;
+            return Meteor.user().profile.avatar_url;
         });
     },
     appName: function() {

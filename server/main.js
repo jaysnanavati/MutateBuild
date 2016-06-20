@@ -140,7 +140,6 @@ Meteor.startup(() => {
                 return {
                     totalTests: total_tests,
                     totalGenerated: totalGenerated,
-                    totalSurvived: totalSurvived,
                     totalKilled: totalKilled,
                     overallMS: totalKilled / totalGenerated,
                     gstats: result,

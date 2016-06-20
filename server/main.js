@@ -60,49 +60,49 @@ Meteor.startup(() => {
                     "commit_message": commit.commit.message
                 }
                 BuildLogs.insert(data, function(error, docId) {
-                    Fiber(function() {
-                        //build exec steps
-                        if (docId) {
-                            var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-                            var buildLocation = home + "/mutatebuilds/" + docId;
-                            shell.mkdir("-p", buildLocation);
-                            shell.exec("git clone " + activeApp.clone_url + " " + buildLocation, function(code, stdout, stderr) {
-                                if (code == 0) {
-                                    var mutationSettings = JSON.parse(shell.cat(buildLocation + "/mut-settings.json"));
-                                    //prepare config string
-                                    var config = [
-                                        'sourceRootDir="' + buildLocation + '";',
-                                        'executablePath="' + docId + "/" + mutationSettings.executable + '";',
-                                        'source=' + (JSON.stringify(mutationSettings.source).replace("[", "(").replace("]", ")")) + ";",
-                                        'testingFramework="' + mutationSettings.testingFramework + '";',
-                                        'CuTestLibSource="' + mutationSettings.CuTestLibSource + '";'
-                                    ]
-                                    shell.exec("touch " + buildLocation + "/config.cfg", function(code, stdout, stderr) {
-                                        _.each(config, function(c) {
-                                            var sc = ShellString(c + "\n");
-                                            sc.toEnd(buildLocation + "/config.cfg");
-                                        })
-                                        shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
-                                            //parse results
-                                            if (code == 0) {
-                                                var resultsLocation = home + "/mutatebuilds/exec_" + docId + '/gstats.xml';
-                                                var parser = new xml2js.Parser();
-                                                fs.readFile(resultsLocation, function(err, data) {
-                                                    if (!err) {
+                    //build exec steps
+                    if (docId) {
+                        var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+                        var buildLocation = home + "/mutatebuilds/" + docId;
+                        shell.mkdir("-p", buildLocation);
+                        shell.exec("git clone " + activeApp.clone_url + " " + buildLocation, function(code, stdout, stderr) {
+                            if (code == 0) {
+                                var mutationSettings = JSON.parse(shell.cat(buildLocation + "/mut-settings.json"));
+                                //prepare config string
+                                var config = [
+                                    'sourceRootDir="' + buildLocation + '";',
+                                    'executablePath="' + docId + "/" + mutationSettings.executable + '";',
+                                    'source=' + (JSON.stringify(mutationSettings.source).replace("[", "(").replace("]", ")")) + ";",
+                                    'testingFramework="' + mutationSettings.testingFramework + '";',
+                                    'CuTestLibSource="' + mutationSettings.CuTestLibSource + '";'
+                                ]
+                                shell.exec("touch " + buildLocation + "/config.cfg", function(code, stdout, stderr) {
+                                    _.each(config, function(c) {
+                                        var sc = ShellString(c + "\n");
+                                        sc.toEnd(buildLocation + "/config.cfg");
+                                    })
+                                    shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
+                                        //parse results
+                                        if (code == 0) {
+                                            var resultsLocation = home + "/mutatebuilds/exec_" + docId + '/gstats.xml';
+                                            var parser = new xml2js.Parser();
+                                            fs.readFile(resultsLocation, function(err, data) {
+                                                if (!err) {
+                                                    Fiber(function() {
                                                         parser.parseString(data, function(err, result) {
                                                             if (!err) {
                                                                 BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
                                                             }
                                                         });
-                                                    }
-                                                });
-                                            }
-                                        });
+                                                    });
+                                                }
+                                            });
+                                        }
                                     });
-                                }
-                            });
-                        }
-                    });
+                                });
+                            }
+                        });
+                    }
                 });
             }
 

@@ -77,7 +77,7 @@ Meteor.startup(() => {
                                     _.each(config, function(c) {
                                         var sc = ShellString(c + "\n");
                                         sc.toEnd(buildLocation + "/config.cfg");
-                                        shell.exec("sh runMutation.sh " + docId);
+                                        shell.exec("sh " + home + "/runMutation.sh " + docId);
                                     })
                                 });
                             }

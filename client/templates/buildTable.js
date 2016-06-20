@@ -1,6 +1,5 @@
 BuildLogs = new Meteor.Collection("BuildLogs");
 
-
 var activeApp;
 
 Template.registerHelper('shortSSH', function(sshString) {
@@ -40,6 +39,9 @@ Template.buildTable.helpers({
     },
     buildLogs: function() {
         return BuildLogs.find({ repoId: activeApp._id }, { sort: { started: -1 } })
+    },
+    buildStatus: function() {
+        return BuildLogs.findOne({ repoId: activeApp._id }, { sort: { started: -1 } })
     }
 });
 

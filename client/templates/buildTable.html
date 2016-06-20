@@ -8,11 +8,9 @@
         <div class="x_panel">
             <div class="x_title build-table-title">
                 <div class="build-status-title">
-                    {{#with buildExists}} {{#if buildPassing}}
-                    <h2 class="build-passing">
-                                 <i class="fa fa-check-circle"></i> PASSING</h2> {{else}}
-                    <h2 class="build-failing">
-                                  <i class="fa fa-exclamation-circle"></i> FAILING</h2> {{/if}} {{/with}}
+                    {{#with buildStatus}}
+                    <h2 class="build-running">
+                         <i class="{{icon status}}"></i> {{status}}</h2> {{/with}}
                 </div>
                 <ul class="nav navbar-right panel_toolbox">
                     <button class="btn btn-default bildRepo-btn" type="button" style="color:#1F98DE;margin-top:10px;margin-right:20px">Build Now</button>

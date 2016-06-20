@@ -9,7 +9,7 @@
             <div class="x_title build-table-title">
                 <div class="build-status-title">
                     {{#with buildStatus}}
-                    <h2 class="build-running">
+                    <h2 class="build-{{status}}">
                          <i class="{{icon status}}"></i> {{status}}</h2> {{/with}}
                 </div>
                 <ul class="nav navbar-right panel_toolbox">
@@ -35,7 +35,7 @@
                     <tbody>
                         {{#each log in buildLogs}} {{#with log}}
                         <tr>
-                            <td style="text-align:center"><i class="{{icon status}}"></i></td>
+                            <td style="text-align:center"><i class="{{icon status}} fa-2x"></i></td>
                             <td>{{livestamp started}}</td>
                             <td>{{record author}}</td>
                             <td style="text-align:center">{{shortSSH revision}}</td>

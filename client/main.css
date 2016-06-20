@@ -4232,7 +4232,7 @@ ul.project_files li a i {
     margin: 20px 0;
 }
 
-.build-passing {
+.build-passed {
     color: #40B859;
 }
 
@@ -4244,9 +4244,10 @@ ul.project_files li a i {
     position: absolute;
     top: 14px;
     left: 11px;
+    text-transform: uppercase;
 }
 
-.build-failing {
+.build-failed {
     color: red;
 }
 

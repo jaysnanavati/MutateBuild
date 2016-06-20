@@ -12,13 +12,13 @@ Template.registerHelper('shortSSH', function(sshString) {
 
 Template.registerHelper('icon', function(status) {
     if (status === "running") {
-        return "fa fa-refresh fa-spin fa-fw fa-2x build-running";
+        return "fa fa-refresh fa-spin fa-fw build-running";
     } else if (status === "passed") {
-        return "fa fa-check fa-2x build-passing";
+        return "fa fa-check  build-passed";
     } else if (status === "failed") {
-        return "fa fa-exclamation-circle fa-2x build-failing";
+        return "fa fa-exclamation-circle  build-failed";
     } else {
-        return "fa fa-exclamation-triangle fa-2x build-failing";
+        return "fa fa-exclamation-triangle  build-failed";
     }
 
 });

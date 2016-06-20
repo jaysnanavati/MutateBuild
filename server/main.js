@@ -3,6 +3,7 @@ import "./accounts.js"
 
 require('shelljs/global');
 var parseString = require('xml2js').parseString;
+xml2js = require('xml2js');
 
 const fs = require("fs");
 const path = require('path');
@@ -82,6 +83,7 @@ Meteor.startup(() => {
                                     shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
                                         //parse results
                                         if (code == 0) {
+                                            var parser = new xml2js.Parser();
                                             fs.readFile(buildLocation + '/gstats.xml', function(err, data) {
                                                 parser.parseString(data, function(err, result) {
                                                     console.dir(result);

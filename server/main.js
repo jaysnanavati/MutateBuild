@@ -94,7 +94,7 @@ Meteor.startup(() => {
                                                                 BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
                                                             }
                                                         });
-                                                    });
+                                                    }).run();
                                                 }
                                             });
                                         }

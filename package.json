@@ -9,6 +9,7 @@
     "github": "^1.1.2",
     "github3": "^1.2.0",
     "meteor-node-stubs": "~0.2.0",
-    "shelljs": "^0.7.0"
+    "shelljs": "^0.7.0",
+    "xml2js": "^0.4.16"
   }
 }

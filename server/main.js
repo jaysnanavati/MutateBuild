@@ -89,7 +89,8 @@ Meteor.startup(() => {
                                                 if (!err) {
                                                     parser.parseString(data, function(err, result) {
                                                         if (!err) {
-                                                            BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
+                                                            console.log(result);
+                                                            BuildLogs.update({ _id: docId }, { $set: result });
                                                         }
                                                     });
                                                 }

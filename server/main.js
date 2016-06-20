@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import "./accounts.js"
 
 require('shelljs/global');
+var parseString = require('xml2js').parseString;
 
 const fs = require("fs");
 const path = require('path');
@@ -80,13 +81,14 @@ Meteor.startup(() => {
                                     })
                                     shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
                                         //parse results
-                                        console.log(code);
-                                        fs.readFile(buildLocation + '/gstats.xml', function(err, data) {
-                                            parser.parseString(data, function(err, result) {
-                                                console.dir(result);
-                                                console.log('Done');
+                                        if (code == 0) {
+                                            fs.readFile(buildLocation + '/gstats.xml', function(err, data) {
+                                                parser.parseString(data, function(err, result) {
+                                                    console.dir(result);
+                                                    console.log('Done');
+                                                });
                                             });
-                                        });
+                                        }
                                     });
                                 });
                             }

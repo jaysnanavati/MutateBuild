@@ -5,24 +5,5 @@
         <p class="project-header-sub">Create a new build by selecting one of your GitHub repositories from below
             <br>(We currently only support C programs which have <a class="mutate-link" href="https://github.com/mity/cutest">CuTest</a> or <a class="mutate-link" href="http://cunit.sourceforge.net/">CUnit</a> tests)</p>
     </div>
-    <div class="row appselect-row">
-        <div class="x_panel appselect-table">
-            <div class="x_title appselect-table-title">
-                <img class="appselect-user-image" src="{{userImageURL}}" alt=""> <span class="appselect-user-name">{{username}}</span>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <div class="">
-                    <ul class="to_do appselect">
-                        <li>
-                            <p>
-                                <input type="radio" class="flat"><span class="repo-name">Schedule meeting with new client</span>
-                                <button class="btn btn-default appselect-build-btn" type="button">Build</button>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{> Repos}}
 </template>

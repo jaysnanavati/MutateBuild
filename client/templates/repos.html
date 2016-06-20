@@ -1,0 +1,26 @@
+<template name="Repos">
+    <div class="row appselect-row">
+        <div class="x_panel appselect-table">
+            <div class="x_title appselect-table-title">
+                <img class="appselect-user-image" src="{{userImageURL}}" alt=""> <span class="appselect-user-name">{{username}}</span>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="">
+                    <ul class="to_do appselect">
+                        <form action="">
+                            {{#each repo in repos}} {{#with repo}}
+                            <li class="repo-item">
+                                <p>
+                                    <input type="radio" name="repo" class="repo-selection"><span class="repo-name">{{name}}</span>
+                                    <button class="btn btn-default appselect-build-btn" type="button" id="{{_id}}">Build</button>
+                                </p>
+                            </li>
+                            {{/with}} {{/each}}
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

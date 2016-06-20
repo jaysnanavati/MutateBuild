@@ -1,21 +1,21 @@
 <template name="buildTable">
     <!-- /top tiles -->
     <div class="row" id="build-title-row" style="padding-top:60px">
-        <p class="project-header">Here are all the builds for {{repoName}}</p>
+        <p class="project-header">Here are all the builds for {{appName}}</p>
         <p class="project-header-sub">A new build will automatically be kicked off every time a 'git push' happens to your repository.</p>
     </div>
     <div class="row" id="build-table">
         <div class="x_panel">
             <div class="x_title build-table-title">
                 <div class="build-status-title">
-                    {{#if buildPassing}}
+                    {{#with buildExists}} {{#if buildPassing}}
                     <h2 class="build-passing">
                                  <i class="fa fa-check-circle"></i> PASSING</h2> {{else}}
                     <h2 class="build-failing">
-                                  <i class="fa fa-exclamation-circle"></i> FAILING</h2> {{/if}}
+                                  <i class="fa fa-exclamation-circle"></i> FAILING</h2> {{/if}} {{/with}}
                 </div>
                 <ul class="nav navbar-right panel_toolbox">
-                    <button class="btn btn-default" type="button" style="color:#1F98DE;margin-top:10px;margin-right:20px">Build Now</button>
+                    <button class="btn btn-default bildRepo-btn" type="button" style="color:#1F98DE;margin-top:10px;margin-right:20px">Build Now</button>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -36,42 +36,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{#each log in buildLogs}} {{#with log}}
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td style="text-align:center"><i class="{{icon status}}"></i></td>
+                            <td>{{livestamp started}}</td>
+                            <td>{{record author}}</td>
+                            <td style="text-align:center">{{shortSSH revision}}</td>
+                            <td>{{record commit_message}}</td>
+                            <td style="text-align:center">{{record tests}}</td>
+                            <td style="text-align:center">{{record mutation_score}}</td>
+                            <td style="text-align:center">{{record mutants_generated}}</td>
+                            <td style="text-align:center">{{record mutants_survived}}</td>
+                            <td style="text-align:center">{{record mutants_killed}}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        {{/with}} {{/each}}
                     </tbody>
                 </table>
             </div>

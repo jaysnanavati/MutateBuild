@@ -3,6 +3,10 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+Meteor.subscribe("getUserData");
+Meteor.subscribe("getManagedRepos");
+
+
 FlowRouter.route('/', {
     name: 'Root',
     triggersEnter: [function(context, redirect) {
@@ -29,6 +33,15 @@ FlowRouter.route('/login', {
         BlazeLayout.render('login_page_template', {});
     }
 });
+
+Tracker.autorun(function(c) {
+    if (!Meteor.userId()) {
+        FlowRouter.go("Login.Show");
+    } else {
+        FlowRouter.go("Home.Show");
+    }
+});
+
 
 function checkUserLoggedIn(context, redirect) {
     if (!Meteor.userId()) {

@@ -1,17 +1,17 @@
 Template.home.helpers({
     fullName: function() {
-        return Meteor.user().profile.name;
-    },
-    repoName: function() {
-        return "2048 Demo"
-    },
-    buildPassing: function() {
-        return true;
+        if (Meteor.user()) {
+            return Meteor.user().profile.name;
+        } else {
+            return null;
+        }
     },
     userImageURL: function() {
-        return Meteor.user().profile.avatar_url;
+        return "https://avatars2.githubusercontent.com/u/2691401?s=72"
     },
-    appName: function() {
-        return null;
+    activeApp: function() {
+        return ManagedRepos.findOne({ isActive: true, owner: Meteor.userId() });
     }
 });
+
+Template.home.onCreated(function() {});

@@ -25,6 +25,10 @@ body {
     height: 100%;
 }
 
+.build-running {
+    color: #1F98DE;
+}
+
 .nav-sm .container.body .col-md-3.left_col .mCSB_container,
 .nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
     overflow: visible;
@@ -4421,6 +4425,15 @@ form:after {
     color: white;
     float: right;
     font-weight: bold;
+    display: none;
+}
+
+.appselect-build-btn.show {
+    display: block;
+}
+
+li.repo-item {
+    background: #F4F9FE !important;
 }
 
 .appselect-user-name {

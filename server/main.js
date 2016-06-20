@@ -116,7 +116,9 @@ Meteor.startup(() => {
                 var overallMS = 0;
 
                 _.each(mutationOperators, function(operator) {
-                    totalGenerated += operator["-generated_mutants"];
+                    console.log(operator);
+                    console.log(operator["-generated_mutants"]);
+                    totalGenerated += parseInt(operator["-generated_mutants"]);
                 })
 
                 return {

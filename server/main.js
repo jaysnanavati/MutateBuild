@@ -115,15 +115,25 @@ Meteor.startup(() => {
                 var mutationOperators = gstats.mutation_operator;
                 //aggregated data
                 var totalGenerated = 0;
-                var totalSurvived = 0;
                 var totalKilled = 0;
-                var overallMS = 0;
 
                 _.each(mutationOperators, function(operator) {
                     var values = _.values(operator);
                     var code = values[0];
                     var data = values[1];
                     totalGenerated += parseInt(data["generated_mutants"]);
+                    if (data["failed_injection"]) {
+                        totalKilled += parseInt(data["failed_injection"]);
+                    }
+                    if (data["killed_by_tests"]) {
+                        totalKilled += parseInt(data["killed_by_tests"]);
+                    }
+                    if (data["killed_SD"]) {
+                        totalKilled += parseInt(data["killed_SD"]);
+                    }
+                    if (data["killed_WD"]) {
+                        totalKilled += parseInt(data["killed_WD"]);
+                    }
                     result[code] = data;
                 })
 
@@ -132,9 +142,9 @@ Meteor.startup(() => {
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,
-                    overallMS: overallMS,
+                    overallMS: totalKilled / totalGenerated,
                     gstats: result,
-                    status: "failed"
+                    status: totalKilled < totalGenerated ? "failed" : "passed"
                 }
             }
         }

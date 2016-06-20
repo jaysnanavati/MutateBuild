@@ -116,13 +116,18 @@ Meteor.startup(() => {
                 var overallMS = 0;
 
                 _.each(mutationOperators, function(operator) {
-                    console.log(operator);
-                    console.log(operator["-generated_mutants"]);
-                    totalGenerated += parseInt(operator["-generated_mutants"]);
+                    var values = _.values(operator);
+                    var code = values[0];
+                    var data = values[1];
+
+                    console.log(code);
+                    console.log(data);
+
+                    totalGenerated += parseInt(data["generated_mutants"]);
                 })
 
                 return {
-                    totalTests: gstats["aggregate_stats"]["-total_tests_run"],
+                    totalTests: 0,
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,

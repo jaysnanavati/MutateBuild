@@ -91,7 +91,7 @@ Meteor.startup(() => {
                                                     Fiber(function() {
                                                         parser.parseString(data, function(err, result) {
                                                             if (!err) {
-                                                                BuildLogs.update({ _id: docId }, { $set: statusparseResult(result), { status: "failed" } });
+                                                                BuildLogs.update({ _id: docId }, { $set: statusparseResult(result) });
                                                             }
                                                         });
                                                     }).run();
@@ -132,7 +132,8 @@ Meteor.startup(() => {
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,
                     overallMS: overallMS,
-                    gstats: result
+                    gstats: result,
+                    status: "failed"
                 }
             }
         }

@@ -22,6 +22,14 @@ FlowRouter.route('/home', {
     }
 });
 
+FlowRouter.route('/build/:buildId', {
+    name: 'Build.Show',
+    triggersEnter: checkUserLoggedIn,
+    action(params, queryParams) {
+        BlazeLayout.render('buildDetails', { buildId: params.buildId });
+    }
+});
+
 FlowRouter.route('/login', {
     name: 'Login.Show',
     triggersEnter: [function(context, redirect) {

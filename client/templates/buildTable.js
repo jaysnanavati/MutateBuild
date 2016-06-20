@@ -49,6 +49,10 @@ Template.buildTable.events({
     'click .bildRepo-btn': function(e) {
         // code goes here
         Meteor.call("bildRepo", activeApp, null);
+    },
+    'click .build-item': function(e) {
+        console.log(this);
+        FlowRouter.go('/build/' + this_.id);
     }
 });
 

@@ -124,8 +124,7 @@ Meteor.startup(() => {
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,
-                    overallMS: overallMS,
-                    gstats: gstats
+                    overallMS: overallMS
                 }
             }
         }

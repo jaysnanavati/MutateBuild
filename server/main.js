@@ -141,7 +141,7 @@ Meteor.startup(() => {
                     totalTests: total_tests,
                     totalGenerated: totalGenerated,
                     totalKilled: totalKilled,
-                    overallMS: totalKilled / totalGenerated,
+                    overallMS: (totalKilled / totalGenerated).toFixed(2),
                     gstats: result,
                     status: totalKilled < totalGenerated ? "failed" : "passed"
                 }

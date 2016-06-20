@@ -27,13 +27,10 @@ Template.registerHelper('icon', function(status) {
 Template.registerHelper('record', function(record) {
     if (record == null) {
         return "-";
-    } else if (record instanceof Number) {
-        return record.toFixed(2);
     } else {
         return record;
     }
 });
-
 Template.buildTable.helpers({
     appName: function() {
         return activeApp.name;

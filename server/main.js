@@ -83,9 +83,13 @@ Meteor.startup(() => {
                                     shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
                                         //parse results
                                         if (code == 0) {
+                                            var resultsLocation = home + "/mutatebuilds/exec_" + docId + '/gstats.xml';
                                             var parser = new xml2js.Parser();
-                                            fs.readFile(buildLocation + '/gstats.xml', function(err, data) {
+                                            fs.readFile(resultsLocation, function(err, data) {
+                                                console.log(err);
+                                                console.log(data);
                                                 parser.parseString(data, function(err, result) {
+                                                    console.log(err);
                                                     console.dir(result);
                                                     console.log('Done');
                                                 });

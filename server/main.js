@@ -108,8 +108,9 @@ Meteor.startup(() => {
 
             function parseResult(result) {
                 var gstats = result.gstats;
-                console.log(gstats);
-                console.log(_.values(gstats));
+                var total_tests = parseInt(gstats["aggregate_stats"][0]['$']["total_tests_run"]);
+
+
                 var result = {};
                 var mutationOperators = gstats.mutation_operator;
                 //aggregated data
@@ -127,7 +128,7 @@ Meteor.startup(() => {
                 })
 
                 return {
-                    totalTests: 0,
+                    totalTests: total_tests,
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,

@@ -86,13 +86,13 @@ Meteor.startup(() => {
                                             var resultsLocation = home + "/mutatebuilds/exec_" + docId + '/gstats.xml';
                                             var parser = new xml2js.Parser();
                                             fs.readFile(resultsLocation, function(err, data) {
-                                                console.log(err);
-                                                console.log(data);
-                                                parser.parseString(data, function(err, result) {
-                                                    console.log(err);
-                                                    console.dir(result);
-                                                    console.log('Done');
-                                                });
+                                                if (!err) {
+                                                    parser.parseString(data, function(err, result) {
+                                                        if (!err) {
+                                                            BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
+                                                        }
+                                                    });
+                                                }
                                             });
                                         }
                                     });
@@ -101,6 +101,28 @@ Meteor.startup(() => {
                         });
                     }
                 });
+            }
+
+            function parseResult(result) {
+                var gstats = result.gstats;
+                var mutationOperators = gstats.mutation_operator;
+                //aggregated data
+                var totalGenerated = 0;
+                var totalSurvived = 0;
+                var totalKilled = 0;
+                var overallMS = 0;
+
+                _.each(mutationOperators, function(operator) {
+                    totalGenerated += operator["-generated_mutants"];
+                })
+
+                return {
+                    totalGenerated: totalGenerated,
+                    totalSurvived: totalSurvived,
+                    totalKilled: totalKilled,
+                    overallMS: overallMS,
+                    gstats: gstats
+                }
             }
         }
     })

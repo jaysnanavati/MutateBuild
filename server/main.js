@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import "./accounts.js"
-import Fibers from 'fibers'
+import Fiber from 'fibers'
 
 require('shelljs/global');
 var parseString = require('xml2js').parseString;

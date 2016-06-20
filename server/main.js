@@ -117,6 +117,7 @@ Meteor.startup(() => {
                 })
 
                 return {
+                    totalTests: gstats["aggregate_stats"]["-total_tests_run"],
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,

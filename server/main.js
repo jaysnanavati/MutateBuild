@@ -91,7 +91,7 @@ Meteor.startup(() => {
                                                     Fiber(function() {
                                                         parser.parseString(data, function(err, result) {
                                                             if (!err) {
-                                                                BuildLogs.update({ _id: docId }, { $set: statusparseResult(result) });
+                                                                BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
                                                             }
                                                         });
                                                     }).run();

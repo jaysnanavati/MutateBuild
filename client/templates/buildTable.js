@@ -46,10 +46,7 @@ Template.buildTable.helpers({
 Template.buildTable.events({
     'click .bildRepo-btn': function(e) {
         // code goes here
-        Meteor.call("bildRepo", activeApp, null, function(error, response) {
-            console.log(error);
-            console.log(response);
-        });
+        Meteor.call("bildRepo", activeApp, null);
     }
 });
 

@@ -25,7 +25,7 @@ Meteor.startup(() => {
 
     // code to run on server at startup
     Meteor.methods({
-        bildRepo: function(activeApp, lastCommit, callback) {
+        bildRepo: function(activeApp, lastCommit) {
             if (!lastCommit) {
                 //get last commit
                 var user = Meteor.users.findOne({ _id: Meteor.userId() });
@@ -91,7 +91,7 @@ Meteor.startup(() => {
                                                     Fiber(function() {
                                                         parser.parseString(data, function(err, result) {
                                                             if (!err) {
-                                                                BuildLogs.update({ _id: docId }, { $set: parseResult(result) });
+                                                                BuildLogs.update({ _id: docId }, { $set: statusparseResult(result), { status: "failed" } });
                                                             }
                                                         });
                                                     }).run();
@@ -108,6 +108,9 @@ Meteor.startup(() => {
 
             function parseResult(result) {
                 var gstats = result.gstats;
+                console.log(gstats);
+                console.log(_.values(gstats));
+                var result = {};
                 var mutationOperators = gstats.mutation_operator;
                 //aggregated data
                 var totalGenerated = 0;
@@ -119,11 +122,8 @@ Meteor.startup(() => {
                     var values = _.values(operator);
                     var code = values[0];
                     var data = values[1];
-
-                    console.log(code);
-                    console.log(data);
-
                     totalGenerated += parseInt(data["generated_mutants"]);
+                    result[code] = data;
                 })
 
                 return {
@@ -131,7 +131,8 @@ Meteor.startup(() => {
                     totalGenerated: totalGenerated,
                     totalSurvived: totalSurvived,
                     totalKilled: totalKilled,
-                    overallMS: overallMS
+                    overallMS: overallMS,
+                    gstats: result
                 }
             }
         }

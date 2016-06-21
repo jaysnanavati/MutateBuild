@@ -6,7 +6,7 @@ Template.buildDetails.helpers({
         return BuildLogs.findOne({ _id: buildId }).status
     },
     revision: function(buildId) {
-        return BuildLogs.findOne({ _id: buildId }).revision
+        return BuildLogs.findOne({ _id: buildId }).revision.substring(0, 7)
     }
 })
 

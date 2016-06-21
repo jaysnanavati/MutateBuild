@@ -34,9 +34,6 @@ Template.buildTable.helpers({
     appName: function() {
         return activeApp.name;
     },
-    buildPassing: function() {
-        return false;
-    },
     buildLogs: function() {
         return BuildLogs.find({ repoId: activeApp._id }, { sort: { started: -1 } })
     },

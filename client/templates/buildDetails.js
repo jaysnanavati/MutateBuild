@@ -52,7 +52,7 @@ Template.buildDetails.helpers({
         var result = [];
         var data = BuildLogs.findOne({ _id: buildId });
         _.each(_.keys(data.gstats), function(k) {
-            result.push({ mutationCode: k, count: ((parseInt(data.gstats[k]["average_CFD"]) / data.averageCFD) * 100).toFixed(2) });
+            result.push({ mutationCode: k, count: ((parseFloat(data.gstats[k]["average_CFD"]) / data.averageCFD) * 100).toFixed(2) });
         });
         return _.sortBy(result, "count");
     },

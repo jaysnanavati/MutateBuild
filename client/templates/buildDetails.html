@@ -31,17 +31,214 @@
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk </p>
+                            <!-- top tiles -->
+                            <div class="row tile_count" style="font-weight:bold">
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Mutation Score</span>
+                                    <div class="count">{{overallMS buildId}}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Total Tests</span>
+                                    <div class="count">{{totalTests buildId}}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Mutants Generated</span>
+                                    <div class="count">{{totalGenerated buildId}}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Mutants Killed</span>
+                                    <div class="count">{{totalKilled buildId}}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Equivalent Mutants</span>
+                                    <div class="count">{{totalEquivalent buildId}}</div>
+                                </div>
+                                <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                    <span class="count_top">Average CFD</span>
+                                    <div class="count">{{averageCFD buildId}}%</div>
+                                </div>
+                            </div>
+                            <!-- /top tiles -->
+                            <div class="row" style="font-weight:bold">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2 style="font-weight:bold">Mutant Population Breakdown</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content" style="font-weight:bold">
+                                        <h4 style="font-weight:bold">Mutation Code</h4> {{#each mutant in generatedMutants buildId}} {{#with mutant}}
+                                        <div class="widget_summary">
+                                            <div class="w_left w_25">
+                                                <span>{{mutationCode}}</span>
+                                            </div>
+                                            <div class="w_center w_55">
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-purple" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{count}}%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="w_right w_20">
+                                                <span>{{count}}%</span>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        {{/with}} {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-top:25px">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Survived Mutants</h2>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <table class="" style="width:100%">
+                                                <tr>
+                                                    <th style="width:37%;">
+                                                    </th>
+                                                    <th>
+                                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                                    </td>
+                                                    <td>
+                                                        <table class="tile_info">
+                                                            {{#each item in survivedPie buildId}} {{#with item}}
+                                                            <tr id="{{type}}" data-count="{{count}}">
+                                                                <td>
+                                                                    <p><i class="fa fa-square {{color}} "></i> {{type}}</p>
+                                                                </td>
+                                                                <td>{{count}}%</td>
+                                                            </tr>
+                                                            {{/with}} {{/each}}
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-top:25px">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Survived Mutants</h2>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <table class="" style="width:100%">
+                                                <tr>
+                                                    <th style="width:37%;">
+                                                    </th>
+                                                    <th>
+                                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <canvas id="canvas2" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                                    </td>
+                                                    <td>
+                                                        <table class="tile_info">
+                                                            {{#each item in survivedPie buildId}} {{#with item}}
+                                                            <tr id="{{type}}" data-count="{{count}}">
+                                                                <td>
+                                                                    <p><i class="fa fa-square {{color}} "></i> {{type}}</p>
+                                                                </td>
+                                                                <td>{{count}}%</td>
+                                                            </tr>
+                                                            {{/with}} {{/each}}
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12" style="margin-top:25px">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h2>Survived Mutants</h2>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <table class="" style="width:100%">
+                                                <tr>
+                                                    <th style="width:37%;">
+                                                    </th>
+                                                    <th>
+                                                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                                        </div>
+                                                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <canvas id="canvas3" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                                    </td>
+                                                    <td>
+                                                        <table class="tile_info">
+                                                            {{#each item in survivedPie buildId}} {{#with item}}
+                                                            <tr id="{{type}}" data-count="{{count}}">
+                                                                <td>
+                                                                    <p><i class="fa fa-square {{color}} "></i> {{type}}</p>
+                                                                </td>
+                                                                <td>{{count}}%</td>
+                                                            </tr>
+                                                            {{/with}} {{/each}}
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " style="font-weight:bold;margin-top:25px; ">
+                                <div class="x_panel ">
+                                    <div class="x_title ">
+                                        <h2 style="font-weight:bold ">Mutant CFD Breakdown</h2>
+                                        <div class="clearfix "></div>
+                                    </div>
+                                    <div class="x_content " style="font-weight:bold ">
+                                        <h4 style="font-weight:bold ">Mutation Code</h4> {{#each mutant in cfdMutants buildId}} {{#with mutant}}
+                                        <div class="widget_summary ">
+                                            <div class="w_left w_25 ">
+                                                <span>{{mutationCode}}</span>
+                                            </div>
+                                            <div class="w_center w_55 ">
+                                                <div class="progress ">
+                                                    <div class="progress-bar bg-purple " role="progressbar " aria-valuenow="60 " aria-valuemin="0 " aria-valuemax="100 " style="width: {{count}}%; ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="w_right w_20 ">
+                                                <span>{{count}}%</span>
+                                            </div>
+                                            <div class="clearfix "></div>
+                                        </div>
+                                        {{/with}} {{/each}}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-        window.setInterval(function() {
-            var elem = $(".code-wrapper")
-            elem.scrollTop = elem.scrollHeight;
-        }, 5000);
+        <script>
         </script>
+        <!-- Flot plugins -->
     </body>
 </template>

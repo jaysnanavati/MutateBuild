@@ -128,6 +128,8 @@ Meteor.startup(() => {
                 //aggregated data
                 var totalGenerated = 0;
                 var totalKilled = 0;
+                var totalCFD = 0;
+                var totalEquivalent = 0;
 
                 _.each(mutationOperators, function(operator) {
                     var values = _.values(operator);
@@ -146,6 +148,12 @@ Meteor.startup(() => {
                     if (data["killed_WD"]) {
                         totalKilled += parseInt(data["killed_WD"]);
                     }
+                    if (data["average_CFD"]) {
+                        totalCFD += parseInt(data["average_CFD"]);
+                    }
+                    if (data["equivalent_mutants"]) {
+                        totalEquivalent += parseInt(data["equivalent_mutants"]);
+                    }
                     result[code] = data;
                 })
 
@@ -155,7 +163,9 @@ Meteor.startup(() => {
                     totalKilled: totalKilled,
                     overallMS: (totalKilled / totalGenerated).toFixed(2),
                     gstats: result,
-                    status: totalKilled < totalGenerated ? "failed" : "passed"
+                    status: totalKilled < totalGenerated ? "failed" : "passed",
+                    averageCFD: (totalCFD / mutationOperators.length).toFixed(2),
+                    totalEquivalent: totalEquivalent
                 }
             }
         }

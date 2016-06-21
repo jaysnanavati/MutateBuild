@@ -33,3 +33,4 @@ izzilab:shelljs
 mrt:xml2js
 twbs:bootstrap
 perak:codemirror
+mrt:flot

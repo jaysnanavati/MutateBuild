@@ -14,7 +14,7 @@ Template.Repos.helpers({
         return "https://avatars2.githubusercontent.com/u/2691401?s=72"
     },
     repos: () => {
-        return Repos.find({ owner: Meteor.userId() });
+        return Repos.find({ owner: Meteor.userId(),language: "C" });
     }
 });
 

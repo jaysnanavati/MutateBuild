@@ -149,7 +149,7 @@ Meteor.startup(() => {
                         totalKilled += parseInt(data["killed_WD"]);
                     }
                     if (data["average_CFD"]) {
-                        totalCFD += parseInt(data["average_CFD"]);
+                        totalCFD += parseFloat(data["average_CFD"]);
                     }
                     if (data["equivalent_mutants"]) {
                         totalEquivalent += parseInt(data["equivalent_mutants"]);

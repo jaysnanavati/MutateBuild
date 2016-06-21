@@ -15,6 +15,10 @@ Template.buildDetails.helpers({
             return "fa fa-exclamation-circle  build-failed";
         }
     },
+    isRunning: function(buildId) {
+        var status = BuildLogs.findOne({ _id: buildId }).status
+        return status === "running";
+    },
     revision: function(buildId) {
         return BuildLogs.findOne({ _id: buildId }).revision.substring(0, 7)
     },
@@ -85,39 +89,6 @@ Template.buildDetails.helpers({
     }
 })
 
-Template.buildDetails.rendered = function() {
-    var options = {
-        legend: false,
-        responsive: false
-    };
-
-    new Chart($("#canvas1"), {
-        type: 'doughnut',
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-        data: {
-            labels: [
-                "CFDVE",
-                "CFD",
-                "VE"
-            ],
-            datasets: [{
-                data: [$("#CFDVE").data("count"), $("#CFD").data("count"), $("#VE").data("count")],
-                backgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ],
-                hoverBackgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ]
-            }]
-        },
-        options: options
-    });
-
-};
 
 Template.buildDetails.onCreated(function() {
     var self = this;

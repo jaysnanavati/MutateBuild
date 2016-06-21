@@ -4,6 +4,9 @@ Template.buildDetails.helpers({
     },
     buildStatus: function(buildId) {
         return BuildLogs.findOne({ _id: buildId }).status
+    },
+    revision: function(buildId) {
+        return BuildLogs.findOne({ _id: buildId }).revision
     }
 })
 
@@ -12,4 +15,11 @@ Template.buildDetails.onCreated(function() {
     self.autorun(function() {
         self.subscribe("getBuildLogs");
     })
+});
+
+Template.buildDetails.events({
+    'click .back-to-builds': function(e) {
+        // code goes here
+        FlowRouter.go('/home');
+    }
 });

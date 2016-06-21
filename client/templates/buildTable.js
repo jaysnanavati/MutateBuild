@@ -11,16 +11,14 @@ Template.registerHelper('shortSSH', function(sshString) {
 });
 
 Template.registerHelper('icon', function(status) {
+    console.log(status);
     if (status === "running") {
         return "fa fa-refresh fa-spin fa-fw build-running";
     } else if (status === "passed") {
         return "fa fa-check  build-passed";
     } else if (status === "failed") {
         return "fa fa-exclamation-circle  build-failed";
-    } else {
-        return "fa fa-exclamation-triangle  build-failed";
     }
-
 });
 
 Template.registerHelper('record', function(record) {

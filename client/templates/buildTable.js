@@ -11,7 +11,6 @@ Template.registerHelper('shortSSH', function(sshString) {
 });
 
 Template.registerHelper('icon', function(status) {
-    console.log(status);
     if (status === "running") {
         return "fa fa-refresh fa-spin fa-fw build-running";
     } else if (status === "passed") {

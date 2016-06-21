@@ -3,7 +3,14 @@ Template.buildDetails.helpers({
         return BuildLogs.findOne({ _id: buildId }).logs
     },
     buildStatus: function(buildId) {
-        return BuildLogs.findOne({ _id: buildId }).status
+        var status = BuildLogs.findOne({ _id: buildId }).status
+        if (status === "running") {
+            return "fa fa-refresh fa-spin fa-fw build-running";
+        } else if (status === "passed") {
+            return "fa fa-check  build-passed";
+        } else if (status === "failed") {
+            return "fa fa-exclamation-circle  build-failed";
+        }
     },
     revision: function(buildId) {
         return BuildLogs.findOne({ _id: buildId }).revision.substring(0, 7)

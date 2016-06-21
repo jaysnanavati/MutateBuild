@@ -6,6 +6,9 @@ require('shelljs/global');
 var parseString = require('xml2js').parseString;
 xml2js = require('xml2js');
 
+var util = require('util');
+var spawn = require('child_process').spawn;
+
 const fs = require("fs");
 const path = require('path');
 
@@ -57,7 +60,8 @@ Meteor.startup(() => {
                     "status": "running",
                     "author": commit.commit.author.name,
                     "revision": commit.sha,
-                    "commit_message": commit.commit.message
+                    "commit_message": commit.commit.message,
+                    "logs": []
                 }
                 BuildLogs.insert(data, function(error, docId) {
                     //build exec steps
@@ -81,8 +85,16 @@ Meteor.startup(() => {
                                         var sc = ShellString(c + "\n");
                                         sc.toEnd(buildLocation + "/config.cfg");
                                     })
-                                    shell.exec("bash " + home + "/runMutation.sh " + docId, function(code, stdout, stderr) {
-                                        //parse results
+
+                                    bash = spawn('bash', [home + "/runMutation.sh", docId]);
+
+                                    bash.stdout.on('data', function(data) {
+                                        Fiber(function() {
+                                            BuildLogs.update({ _id: docId }, { $push: { 'logs': "" + data } })
+                                        }).run();
+                                    });
+
+                                    bash.on('exit', function(code) {
                                         if (code == 0) {
                                             var resultsLocation = home + "/mutatebuilds/exec_" + docId + '/gstats.xml';
                                             var parser = new xml2js.Parser();

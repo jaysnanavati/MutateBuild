@@ -31,3 +31,5 @@ momentjs:moment
 copleykj:livestamp
 izzilab:shelljs
 mrt:xml2js
+twbs:bootstrap
+perak:codemirror

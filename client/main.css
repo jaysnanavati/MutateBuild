@@ -4247,6 +4247,53 @@ ul.project_files li a i {
     text-transform: uppercase;
 }
 
+.code-wrapper {
+    background: #33485E;
+    border-radius: 3px;
+    height: 830px;
+    padding: 15px;
+    margin-top: 15px;
+    line-height: 25px;
+    overflow: scroll;
+}
+
+.code-wrapper .line-number {
+    color: #85929E;
+    width: 2%;
+    padding-left: 20px;
+}
+
+.code-wrapper .line-content {
+    color: #EBEDEF;
+}
+
+.build-details-tab-panel {
+    width: 66.5% !important;
+    margin: auto;
+}
+
+.builddetails-tabs {
+    background: none !important;
+    border: none !important;
+    padding-top: 22px;
+}
+
+.details-title {
+    padding-top: 87px;
+}
+
+.build-details-nav {
+    width: 64%;
+    height: 140px;
+    margin: auto;
+    color: #1F98DE;
+    font-size: 33px;
+}
+
+.build-details-title {
+    background: #FBFCFD;
+}
+
 .build-failed {
     color: red;
 }

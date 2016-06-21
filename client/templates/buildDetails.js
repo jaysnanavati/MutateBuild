@@ -101,7 +101,7 @@ Template.buildDetails.rendered = function() {
                 "VE"
             ],
             datasets: [{
-                data: [$("#canvas1").find("#CFDVE").data("count"), $("#canvas1").find("#CFD").data("count"), $("#canvas1").find("#VE").data("count")],
+                data: [$("#CFDVE").data("count"), $("#CFD").data("count"), $("#VE").data("count")],
                 backgroundColor: [
                     "blue",
                     "green",
@@ -117,57 +117,6 @@ Template.buildDetails.rendered = function() {
         options: options
     });
 
-    new Chart($("#canvas2"), {
-        type: 'doughnut',
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-        data: {
-            labels: [
-                "CFDVE",
-                "CFD",
-                "VE"
-            ],
-            datasets: [{
-                data: [$("#canvas2").find("#CFDVE").data("count"), $("#canvas2").find("#CFD").data("count"), $("#canvas2").find("#VE").data("count")],
-                backgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ],
-                hoverBackgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ]
-            }]
-        },
-        options: options
-    });
-
-    new Chart($("#canvas3"), {
-        type: 'doughnut',
-        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-        data: {
-            labels: [
-                "CFDVE",
-                "CFD",
-                "VE"
-            ],
-            datasets: [{
-                data: [$("#canvas3").find("#CFDVE").data("count"), $("#canvas3").find("#CFD").data("count"), $("#canvas3").find("#VE").data("count")],
-                backgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ],
-                hoverBackgroundColor: [
-                    "blue",
-                    "green",
-                    "purple"
-                ]
-            }]
-        },
-        options: options
-    });
 };
 
 Template.buildDetails.onCreated(function() {

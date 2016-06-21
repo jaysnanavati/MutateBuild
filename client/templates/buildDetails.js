@@ -1,5 +1,6 @@
 Template.buildDetails.helpers({
     logs: function(buildId) {
+
         return BuildLogs.findOne({ _id: buildId }).logs
     }
 })

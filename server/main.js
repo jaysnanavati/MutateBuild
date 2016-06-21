@@ -90,7 +90,7 @@ Meteor.startup(() => {
 
                                     bash.stdout.on('data', function(data) {
                                         Fiber(function() {
-                                            BuildLogs.update({ _id: docId }, { $push: { 'logs': "" + data } })
+                                            BuildLogs.update({ _id: docId }, { $push: { 'logs': "" + data + "\n\n" } })
                                         }).run();
                                     });
 
